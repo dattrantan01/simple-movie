@@ -1,7 +1,10 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom'
 //https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg
 const MovieCard = ({item}) => {
-    const {title, vote_average, release_date, poster_path} = item;
+    const {title, vote_average, release_date, poster_path, id} = item;
+    
+    const handleNavigate = useNavigate();
     return (
         <div className="movie-card rounded-lg p-3 bg-slate-800 text-white h-full flex flex-col select-none">
             <img 
@@ -14,7 +17,16 @@ const MovieCard = ({item}) => {
               <span>{new Date(release_date).getFullYear()}</span>
               <span>{vote_average}</span>
             </div>
-            <button className="py-3 px-6 rounded-lg bg-primary text-white font-medium w-full mt-auto">Watch Now</button>
+            <button className="py-3 px-6 rounded-lg bg-primary text-white font-medium w-full mt-auto"
+              onClick={(e) => 
+              {
+                // console.log(`clicked ${id}`);
+                handleNavigate(`/movie/${id}`)}
+                
+              }
+            >
+              Watch Now
+            </button>
         </div>
     );
 };

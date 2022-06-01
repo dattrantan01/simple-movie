@@ -24,7 +24,7 @@ const MovieList = ({type="now_playing"}) => {
         
         fetchData();
     }, [])
-    console.log(movies)
+    // console.log(movies)
     return (
         <div className="movie-list">
             <Swiper
